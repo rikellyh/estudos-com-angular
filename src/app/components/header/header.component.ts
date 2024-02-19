@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { StyleManagerService } from '../../services/style-manager.service';
 
 @Component({
   selector: 'app-header',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  private styleManager = inject(StyleManagerService);
+  isDark = this.styleManager.isDark;
+
+  toggleDarkTheme() {
+    this.styleManager.toggleDarkTheme();
+    this.isDark = !this.isDark;
+  }
+}

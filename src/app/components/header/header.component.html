@@ -1,1 +1,20 @@
-<p style="background-color: yellow">este é o header</p>
+<header [className]="isDark ? 'dark-theme' : ''">
+  <div class="container-header">
+    <div>
+      <span>Where in the world?</span>
+    </div>
+    <div>
+      <button class="btn-theme" type="button" (click)="toggleDarkTheme()">
+        <img
+          [src]="
+            isDark
+              ? '/assets/images/svg/moon-fill.svg'
+              : '/assets/images/svg/moon-not-fill.svg'
+          "
+          alt="ícone de lua"
+        />
+        <span>Dark Mode</span>
+      </button>
+    </div>
+  </div>
+</header>

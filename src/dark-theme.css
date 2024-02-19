@@ -1,0 +1,10 @@
+:root {
+  --DarkModeBg: hsl(207, 26%, 17%);
+  --DarkModeElements: hsl(209, 23%, 22%);
+  --DarkModeText-LightModeElements: hsl(0, 0%, 100%);
+}
+
+body,
+html {
+  background-color: var(--DarkModeBg);
+}
