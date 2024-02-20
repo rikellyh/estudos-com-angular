@@ -1,9 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
-import { StyleManagerService } from './services/style-manager.service';
-
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -13,12 +11,4 @@ import { StyleManagerService } from './services/style-manager.service';
 })
 export class AppComponent {
   title = 'learning-angular';
-
-  private styleManager = inject(StyleManagerService);
-  isDark = this.styleManager.isDark;
-
-  toggleDarkTheme() {
-    this.styleManager.toggleDarkTheme();
-    this.isDark = !this.isDark;
-  }
 }

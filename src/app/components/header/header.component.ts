@@ -1,5 +1,4 @@
-import { Component, inject } from '@angular/core';
-import { StyleManagerService } from '../../services/style-manager.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -9,11 +8,14 @@ import { StyleManagerService } from '../../services/style-manager.service';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  private styleManager = inject(StyleManagerService);
-  isDark = this.styleManager.isDark;
+  public isLightTheme = true;
 
-  toggleDarkTheme() {
-    this.styleManager.toggleDarkTheme();
-    this.isDark = !this.isDark;
+  onThemeSwitchChange() {
+    this.isLightTheme = !this.isLightTheme;
+
+    document.body.setAttribute(
+      'data-theme',
+      this.isLightTheme ? 'light' : 'dark'
+    );
   }
 }

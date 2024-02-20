@@ -1,19 +1,19 @@
-<header [className]="isDark ? 'dark-theme' : ''">
+<header [className]="isLightTheme ? 'dark-theme' : ''">
   <div class="container-header">
     <div>
       <span>Where in the world?</span>
     </div>
     <div>
-      <button class="btn-theme" type="button" (click)="toggleDarkTheme()">
+      <button class="btn-theme" type="button" (click)="onThemeSwitchChange()">
         <img
           [src]="
-            isDark
-              ? '/assets/images/svg/moon-fill.svg'
-              : '/assets/images/svg/moon-not-fill.svg'
+            isLightTheme
+              ? '/assets/images/svg/icon-moon-fill.svg'
+              : '/assets/images/svg/icon-moon-not-fill.svg'
           "
-          alt="ícone de lua"
+          alt="moon icon"
         />
-        <span>Dark Mode</span>
+        <span>{{ isLightTheme ? "Dark Mode" : "Light Mode" }}</span>
       </button>
     </div>
   </div>

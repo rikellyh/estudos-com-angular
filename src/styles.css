@@ -3,10 +3,16 @@
    License: none (public domain)
 */
 
-:root {
-  --LightModeBg: hsl(0, 0%, 98%);
-  --LightModeInput: hsl(0, 0%, 52%);
+[data-theme="light"] {
+  --ModeBg: hsl(0, 0%, 98%);
+  --ModeInput: hsl(0, 0%, 52%);
   --LightModeText: hsl(200, 15%, 8%);
+  --DarkModeText-LightModeElements: hsl(0, 0%, 100%);
+}
+
+[data-theme="dark"] {
+  --ModeBg: hsl(207, 26%, 17%);
+  --ModeElements: hsl(209, 23%, 22%);
   --DarkModeText-LightModeElements: hsl(0, 0%, 100%);
 }
 
@@ -33,9 +39,9 @@
   font-style: normal;
 }
 
-body,
-html {
+body {
   background-color: var(--LightModeBg);
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 html,
@@ -167,6 +173,13 @@ button {
   outline: none;
   cursor: pointer;
   font-family: "Nunito";
+}
+button,
+input,
+select,
+textarea {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: inherit;
 }
 img {
   width: 100%;

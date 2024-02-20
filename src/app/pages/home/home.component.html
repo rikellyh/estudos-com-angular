@@ -1,1 +1,30 @@
-<h1>Teste</h1>
+<main>
+  <form>
+    <div class="boxSearchCountry">
+      <div>
+        <img
+          [src]="
+            isLightTheme
+              ? '/assets/images/svg/icon-search.dark.svg'
+              : '/assets/images/svg/icon-search-light.svg'
+          "
+          alt="search icon"
+        />
+      </div>
+      <input type="text" placeholder="Search for a country..." />
+    </div>
+    <mat-form-field appearance="outline">
+      <mat-label>Filter by Region</mat-label>
+      <mat-select>
+        <mat-option>None</mat-option>
+        <mat-option>A</mat-option>
+        <mat-option>B</mat-option>
+        <mat-option>C</mat-option>
+        <!-- <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option> -->
+      </mat-select>
+    </mat-form-field>
+  </form>
+  <section>
+    <p>Listagem dos cards</p>
+  </section>
+</main>
