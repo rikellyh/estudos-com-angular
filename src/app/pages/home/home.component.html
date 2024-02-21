@@ -1,10 +1,10 @@
-<main>
-  <form>
-    <div class="boxSearchCountry">
-      <div>
+<form>
+  <div class="boxSearchCountry" [style.border]="touched" (click)="onClick()">
+    <div>
+      <div class="searchIcon">
         <img
           [src]="
-            isLightTheme
+            isDark
               ? '/assets/images/svg/icon-search.dark.svg'
               : '/assets/images/svg/icon-search-light.svg'
           "
@@ -13,18 +13,19 @@
       </div>
       <input type="text" placeholder="Search for a country..." />
     </div>
-    <mat-form-field appearance="outline">
-      <mat-label>Filter by Region</mat-label>
-      <mat-select>
-        <mat-option>None</mat-option>
-        <mat-option>A</mat-option>
-        <mat-option>B</mat-option>
-        <mat-option>C</mat-option>
-        <!-- <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option> -->
-      </mat-select>
-    </mat-form-field>
-  </form>
-  <section>
-    <p>Listagem dos cards</p>
-  </section>
-</main>
+  </div>
+  <mat-form-field appearance="outline">
+    <mat-label>Filter by Region</mat-label>
+    <mat-select>
+      <mat-option>None</mat-option>
+      <mat-option>A</mat-option>
+      <mat-option>B</mat-option>
+      <mat-option>C</mat-option>
+      <!-- <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option> -->
+    </mat-select>
+  </mat-form-field>
+</form>
+<section>
+  <a routerLink="/detailsCountry">detailsCountry</a>
+  <p>Listagem dos cards</p>
+</section>

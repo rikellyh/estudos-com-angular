@@ -1,2 +1,25 @@
-<app-header></app-header>
-<router-outlet></router-outlet>
+<div class="app">
+  <header [className]="isDark ? 'dark-theme' : ''">
+    <div class="container-header">
+      <div>
+        <span>Where in the world?</span>
+      </div>
+      <div>
+        <button class="btn-theme" type="button" (click)="toggleDarkTheme()">
+          <img
+            [src]="
+              isDark
+                ? '/assets/images/svg/icon-moon-fill.svg'
+                : '/assets/images/svg/icon-moon-not-fill.svg'
+            "
+            alt="moon icon"
+          />
+          <span>{{ isDark ? "Dark Mode" : "Light Mode" }}</span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main [className]="isDark ? 'dark-theme' : ''">
+    <router-outlet></router-outlet>
+  </main>
+</div>

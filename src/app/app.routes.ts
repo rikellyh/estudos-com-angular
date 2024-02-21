@@ -1,22 +1,9 @@
-import { Routes, RouterModule } from '@angular/router';
-import { NgModule } from '@angular/core';
-import { HomeComponent } from './pages/home/home.component';
+import { Routes } from "@angular/router";
 
-export const routes: Routes = [{ path: '', component: HomeComponent }];
+import { HomeComponent } from "./pages/home/home.component";
+import { DetailsCountryComponent } from "./pages/details-country/details-country.component";
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {
-  public isLightTheme = true;
-
-  onThemeSwitchChange() {
-    this.isLightTheme = !this.isLightTheme;
-
-    document.body.setAttribute(
-      'data-theme',
-      this.isLightTheme ? 'light' : 'dark'
-    );
-  }
-}
+export const routes: Routes = [
+  { path: "", component: HomeComponent },
+  { path: "detailsCountry", component: DetailsCountryComponent },
+];

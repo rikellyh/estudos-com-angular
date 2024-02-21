@@ -1,23 +1,39 @@
-import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
-import { MatSelectModule } from '@angular/material/select';
+import { Component, HostListener, inject } from "@angular/core";
+import { RouterLink, RouterOutlet } from "@angular/router";
+import { MatSelectModule } from "@angular/material/select";
+import { StyleManagerService } from "../../services/style-manager.service";
 
 @Component({
-  selector: 'app-home',
+  selector: "app-home",
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, MatSelectModule],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
+  imports: [RouterLink, RouterOutlet, MatSelectModule],
+  templateUrl: "./home.component.html",
+  styleUrl: "./home.component.css",
 })
 export class HomeComponent {
-  public isLightTheme = true;
+  private styleManager = inject(StyleManagerService);
+  isDark = this.styleManager.isDark;
 
-  onThemeSwitchChange() {
-    this.isLightTheme = !this.isLightTheme;
+  inside = false;
+  touched =
+    "2px solid var(--mdc-outlined-text-field-disabled-input-text-color)";
 
-    document.body.setAttribute(
-      'data-theme',
-      this.isLightTheme ? 'light' : 'dark'
-    );
+  onClick() {
+    this.touched = "2px solid var(--mat-badge-background-color)";
+    this.inside = true;
+  }
+
+  @HostListener("document:click")
+  clickedOutside() {
+    if (!this.inside) {
+      this.touched =
+        "2px solid var(--mdc-outlined-text-field-disabled-input-text-color)";
+    }
+    this.inside = false;
+  }
+
+  toggleDarkTheme() {
+    this.styleManager.toggleDarkTheme();
+    this.isDark = !this.isDark;
   }
 }
