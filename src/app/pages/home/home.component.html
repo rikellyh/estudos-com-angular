@@ -1,21 +1,19 @@
 <form>
   <div class="boxSearchCountry" [style.border]="touched" (click)="onClick()">
-    <div>
-      <div class="searchIcon">
-        <img
-          [src]="
-            isDark
-              ? '/assets/images/svg/icon-search.dark.svg'
-              : '/assets/images/svg/icon-search-light.svg'
-          "
-          alt="search icon"
-        />
-      </div>
-      <input type="text" placeholder="Search for a country..." />
+    <div class="searchIcon">
+      <img
+        [src]="
+          isDark
+            ? '/assets/images/svg/icon-search.dark.svg'
+            : '/assets/images/svg/icon-search-light.svg'
+        "
+        alt="search icon"
+      />
     </div>
+    <input type="text" placeholder="Search for a country..." />
   </div>
   <mat-form-field appearance="outline">
-    <mat-label>Filter by Region</mat-label>
+    <mat-label class="selectLabel">Filter by Region</mat-label>
     <mat-select>
       <mat-option>None</mat-option>
       <mat-option>A</mat-option>
