@@ -1,7 +1,10 @@
 import { Component, HostListener, OnInit, inject } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { MatSelectModule } from '@angular/material/select';
 import { HttpErrorResponse } from '@angular/common/http';
+
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 import { StyleManagerService } from '../../services/style-manager.service';
 import { GetUnitsService } from './../../services/get-units.service';
@@ -10,7 +13,13 @@ import { Country } from '../../types/units-response.interface';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, RouterOutlet, MatSelectModule],
+  imports: [
+    RouterLink,
+    RouterOutlet,
+    MatSelectModule,
+    MatCardModule,
+    MatButtonModule,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })

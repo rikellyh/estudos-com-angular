@@ -8,6 +8,7 @@ export interface Country {
   currencies: Currencies;
   languages: Languages;
   borders: string[];
+  flags: Flags;
 }
 
 interface Name {
@@ -32,4 +33,10 @@ interface Currency {
 
 interface Languages {
   [language: string]: string;
+}
+
+interface Flags {
+  png: string;
+  svg: string;
+  alt: string;
 }

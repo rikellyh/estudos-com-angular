@@ -24,6 +24,27 @@
   </mat-form-field>
 </form>
 <section>
-  <a routerLink="/detailsCountry">detailsCountry</a>
-  <p>Listagem dos cards</p>
+  <!-- <a routerLink="/detailsCountry">detailsCountry</a>
+  <p>Listagem dos cards</p> -->
+  <ul>
+    @for (country of countries; track country.name) {
+    <li>
+      <mat-card class="example-card">
+        <mat-card-header>
+          <img
+            mat-card-image
+            [src]="'{{country.flags.svg}}'"
+            alt="'{{ country.flags.alt }}'"
+          />
+        </mat-card-header>
+        <mat-card-content>
+          <h1>{{ country.name.common }}</h1>
+          <span>{{ country.population }}</span>
+          <span>{{ country.region }}</span>
+          <span>{{ country.capital }}</span>
+        </mat-card-content>
+      </mat-card>
+    </li>
+    }
+  </ul>
 </section>
