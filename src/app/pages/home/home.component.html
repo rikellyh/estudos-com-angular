@@ -27,24 +27,44 @@
   <!-- <a routerLink="/detailsCountry">detailsCountry</a>
   <p>Listagem dos cards</p> -->
   <ul>
-    @for (country of countries; track country.name) {
+    @for (country of countries | paginate : { itemsPerPage: pageSize,
+    currentPage: page, totalItems: count }; track country.name) {
     <li>
-      <mat-card class="example-card">
+      <mat-card class="cardInfoCountry">
         <mat-card-header>
           <img
             mat-card-image
-            [src]="'{{country.flags.svg}}'"
+            [src]="country.flags.svg"
             alt="'{{ country.flags.alt }}'"
           />
         </mat-card-header>
         <mat-card-content>
           <h1>{{ country.name.common }}</h1>
-          <span>{{ country.population }}</span>
-          <span>{{ country.region }}</span>
-          <span>{{ country.capital }}</span>
+          <div class="infoContent">
+            <div>
+              <p>Population:</p>
+              <span>{{ country.population.toLocaleString("en-US") }}</span>
+            </div>
+            <div>
+              <p>Region:</p>
+              <span>{{ country.region }}</span>
+            </div>
+            <div>
+              <p>Capital:</p>
+              <span>{{ country.capital }}</span>
+            </div>
+          </div>
         </mat-card-content>
       </mat-card>
     </li>
     }
   </ul>
+  <div>
+    <pagination-controls
+      previousLabel="Prev"
+      nextLabel="Next"
+      [responsive]="true"
+      (pageChange)="handlePageChange($event)"
+    ></pagination-controls>
+  </div>
 </section>

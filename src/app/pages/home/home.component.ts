@@ -5,10 +5,11 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { NgxPaginationModule } from 'ngx-pagination';
 
-import { StyleManagerService } from '../../services/style-manager.service';
-import { GetUnitsService } from './../../services/get-units.service';
 import { Country } from '../../types/units-response.interface';
+import { GetUnitsService } from './../../services/get-units.service';
+import { StyleManagerService } from '../../services/style-manager.service';
 
 @Component({
   selector: 'app-home',
@@ -19,12 +20,17 @@ import { Country } from '../../types/units-response.interface';
     MatSelectModule,
     MatCardModule,
     MatButtonModule,
+    NgxPaginationModule,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
-  public countries: Country[] | undefined;
+  public countries: Country[] = [];
+  page = 1;
+  count = 0;
+  pageSize = 8;
+  currentIndex = -1;
 
   constructor(private unitService: GetUnitsService) {}
 
@@ -36,12 +42,22 @@ export class HomeComponent implements OnInit {
     this.unitService.getCountries().subscribe(
       (response: Country[]) => {
         this.countries = response;
-        console.log(this.countries);
+        this.count = this.countries.length;
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
       }
     );
+  }
+
+  handlePageChange(event: number): void {
+    this.page = event;
+    // this.getCountries();
+    this.scrollToTop();
+  }
+
+  scrollToTop(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   private styleManager = inject(StyleManagerService);

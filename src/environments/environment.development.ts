@@ -1,4 +1,5 @@
 export const environment = {
-  production: true,
+  production: false,
   apiUrl: 'https://restcountries.com/v3.1',
+  imgUrl: 'https://flagcdn.com/',
 };

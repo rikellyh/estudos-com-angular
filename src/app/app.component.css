@@ -45,3 +45,13 @@ span {
 main {
   margin: 50px auto;
 }
+
+@media (min-width: 1000px) {
+  .container-header {
+    padding: 0 3.5rem;
+  }
+
+  span:first-child {
+    font-size: 1.25rem;
+  }
+}

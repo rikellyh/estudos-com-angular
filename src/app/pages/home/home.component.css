@@ -45,6 +45,7 @@ form {
 
 section {
   padding: 0 50px;
+  text-align: center;
 }
 
 input {
@@ -64,4 +65,114 @@ input:focus {
 
 input::placeholder {
   color: #d2d2d2;
+}
+
+ul {
+  display: grid;
+  justify-content: center;
+  gap: 4rem;
+  margin-bottom: 4rem;
+}
+
+::ng-deep .cardInfoCountry .mat-mdc-card-header {
+  padding: 0;
+}
+
+::ng-deep .cardInfoCountry.mat-mdc-card {
+  height: 100%;
+  max-width: 25rem;
+
+  cursor: pointer;
+  border-radius: 0.625rem;
+  box-shadow: 0 2px 10px 0 rgba(217, 217, 217, 0.5);
+}
+
+::ng-deep .cardInfoCountry img {
+  height: 100%;
+  max-height: 15rem;
+  max-width: 22rem;
+
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0px 15px 10px -15px rgba(217, 217, 217, 0.5);
+}
+
+::ng-deep .cardInfoCountry .mat-mdc-card-content:last-child {
+  padding-bottom: 3.75rem;
+}
+
+::ng-deep .cardInfoCountry .mat-mdc-card-content {
+  padding: 40px 30px;
+  height: 100%;
+
+  font-family: "Nunito";
+
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+
+::ng-deep .cardInfoCountry .mat-mdc-card-content h1 {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+::ng-deep .cardInfoCountry .mat-mdc-card-content .infoContent {
+  margin-top: 1.875rem;
+  font-size: 1.125rem;
+
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+::ng-deep .cardInfoCountry .mat-mdc-card-content .infoContent > div {
+  display: flex;
+  gap: 0.5rem;
+}
+
+::ng-deep .cardInfoCountry .mat-mdc-card-content .infoContent p {
+  font-weight: 600;
+}
+
+@media (min-width: 850px) {
+  .cardInfoCountry img {
+    max-width: unset;
+    max-height: 17rem;
+  }
+
+  ul {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+  }
+}
+
+@media (min-width: 1000px) {
+  input {
+    font-size: 1rem;
+  }
+
+  ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  form {
+    padding: 0 50px;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .boxSearchCountry {
+    width: 40%;
+  }
+
+  .mat-mdc-form-field {
+    align-self: unset;
+  }
+
+  ul {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
