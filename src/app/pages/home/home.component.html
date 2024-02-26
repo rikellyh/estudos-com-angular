@@ -10,24 +10,28 @@
         alt="search icon"
       />
     </div>
-    <input type="text" placeholder="Search for a country..." />
+    <input
+      type="text"
+      id="search"
+      #criteria
+      (input)="searchCountry(criteria.value)"
+      placeholder="Search for a country..."
+    />
   </div>
   <mat-form-field appearance="outline">
     <mat-label class="selectLabel">Filter by Region</mat-label>
-    <mat-select>
-      <mat-option>None</mat-option>
-      <mat-option>A</mat-option>
-      <mat-option>B</mat-option>
-      <mat-option>C</mat-option>
-      <!-- <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option> -->
+    <mat-select name="region">
+      <!-- <mat-option [value]="null" disabled>None</mat-option> -->
+      @for (region of uniqueRegions; track uniqueRegions) {
+      <mat-option>{{ region }}</mat-option>
+      }
     </mat-select>
   </mat-form-field>
 </form>
 <section>
-  <!-- <a routerLink="/detailsCountry">detailsCountry</a>
-  <p>Listagem dos cards</p> -->
+  <!-- <a routerLink="/detailsCountry">detailsCountry</a> -->
   <ul>
-    @for (country of countries | paginate : { itemsPerPage: pageSize,
+    @for (country of filteredCountries | paginate : { itemsPerPage: pageSize,
     currentPage: page, totalItems: count }; track country.name) {
     <li>
       <mat-card class="cardInfoCountry">
