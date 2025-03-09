@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit, inject } from "@angular/core";
 import { RouterLink, RouterOutlet } from "@angular/router";
 import { HttpErrorResponse } from "@angular/common/http";
+import { FormsModule } from "@angular/forms";
 
 import { MatSelectModule } from "@angular/material/select";
 import { MatButtonModule } from "@angular/material/button";
@@ -9,6 +10,7 @@ import { NgxPaginationModule } from "ngx-pagination";
 
 import { Country } from "../../types/units-response.interface";
 import { GetUnitsService } from "./../../services/get-units.service";
+import { FilterUnitsService } from "../../services/filter-units.service";
 import { StyleManagerService } from "../../services/style-manager.service";
 
 @Component({
@@ -21,6 +23,7 @@ import { StyleManagerService } from "../../services/style-manager.service";
     MatCardModule,
     MatButtonModule,
     NgxPaginationModule,
+    FormsModule,
   ],
   templateUrl: "./home.component.html",
   styleUrl: "./home.component.css",
@@ -35,7 +38,10 @@ export class HomeComponent implements OnInit {
   pageSize = 8;
   currentIndex = -1;
 
-  constructor(private unitService: GetUnitsService) {}
+  constructor(
+    private unitService: GetUnitsService,
+    private filterService: FilterUnitsService
+  ) {}
 
   ngOnInit() {
     this.getCountries();
@@ -57,8 +63,25 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  public onRegionChange(region: string | null): void {
+    if (region) {
+      this.filterService.getCountriesByRegion(region).subscribe(
+        (response: Country[]) => {
+          this.filteredCountries = response;
+          this.count = this.filteredCountries.length;
+        },
+        (error: HttpErrorResponse) => {
+          alert(error.message);
+        }
+      );
+    } else {
+      this.getCountries();
+    }
+  }
+
   searchCountry(country: string) {
     country = country ? country.trim() : "";
+
     this.filteredCountries = this.countries.filter((item) => {
       return Object.values(item)
         .join("")
@@ -69,18 +92,6 @@ export class HomeComponent implements OnInit {
 
     this.count = this.filteredCountries.length;
   }
-
-  // filter(array: Array) {
-  //   const selected = array.filter((item) =>
-  //     this.selectedRegion.includes(item.region)
-  //   );
-
-  //   const notSelected = array.filter(
-  //     (item) => !this.selectedRegion.includes(item.region)
-  //   );
-
-  //   return [...selected, ...notSelected];
-  // }
 
   handlePageChange(event: number): void {
     this.page = event;

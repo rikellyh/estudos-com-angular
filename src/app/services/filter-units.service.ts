@@ -1,24 +1,19 @@
+import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+
+import { environment } from "../../environments/environment";
 import { Country } from "../types/units-response.interface";
 
 @Injectable({
   providedIn: "root",
 })
 export class FilterUnitsService {
-  constructor() {}
+  private apiUrl = environment.apiUrl;
 
-  // onRegionSelect(country: Country[]){
-  //   let result = country;
-  //   let selectedRegion = result;
+  constructor(private http: HttpClient) {}
 
-  //   const selected = country.filter((item) =>
-  //   selectedRegion.includes(item.region)
-  // );
-
-  // const notSelected = country.filter(
-  //   (item) => !selectedRegion.includes(item.region)
-  // );
-
-  // return [...selected, ...notSelected];
-  // }
+  public getCountriesByRegion(region: string): Observable<Country[]> {
+    return this.http.get<Country[]>(`${this.apiUrl}/region/${region}`);
+  }
 }

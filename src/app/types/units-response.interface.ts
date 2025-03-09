@@ -9,6 +9,8 @@ export interface Country {
   languages: Languages;
   borders: string[];
   flags: Flags;
+  cca2: string;
+  cca3: string;
 }
 
 interface Name {

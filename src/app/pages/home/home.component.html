@@ -20,10 +20,14 @@
   </div>
   <mat-form-field appearance="outline">
     <mat-label class="selectLabel">Filter by Region</mat-label>
-    <mat-select name="region">
+    <mat-select
+      name="region"
+      [(ngModel)]="selectedRegion"
+      (selectionChange)="onRegionChange(selectedRegion)"
+    >
       <!-- <mat-option [value]="null" disabled>None</mat-option> -->
       @for (region of uniqueRegions; track uniqueRegions) {
-      <mat-option>{{ region }}</mat-option>
+      <mat-option [value]="region">{{ region }}</mat-option>
       }
     </mat-select>
   </mat-form-field>

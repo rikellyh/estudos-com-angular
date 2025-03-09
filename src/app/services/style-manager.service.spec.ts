@@ -1,8 +1,8 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from "@angular/core/testing";
 
-import { StyleManagerService } from './style-manager.service';
+import { StyleManagerService } from "./style-manager.service";
 
-describe('StyleManagerService', () => {
+describe("StyleManagerService", () => {
   let service: StyleManagerService;
 
   beforeEach(() => {
@@ -10,7 +10,7 @@ describe('StyleManagerService', () => {
     service = TestBed.inject(StyleManagerService);
   });
 
-  it('should be created', () => {
+  it("should be created", () => {
     expect(service).toBeTruthy();
   });
 });

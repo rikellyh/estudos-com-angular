@@ -20,7 +20,8 @@ main.dark-theme .selectLabel {
 }
 
 main.dark-theme input,
-main.dark-theme input::placeholder {
+main.dark-theme input::placeholder,
+main.dark-theme .mat-mdc-select-trigger {
   color: var(--DarkModeText-LightModeElements);
 }
 
