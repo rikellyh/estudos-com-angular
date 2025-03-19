@@ -17,7 +17,7 @@ export class GetUnitsService {
     return this.http.get<Country[]>(`${this.apiUrl}/all`);
   }
 
-  public getCountry(name: string): Observable<Country> {
-    return this.http.get<Country>(`${this.apiUrl}/name/${name}`);
+  public getCountry(cca3: string): Observable<Country[]> {
+    return this.http.get<Country[]>(`${this.apiUrl}/alpha/${cca3}`);
   }
 }

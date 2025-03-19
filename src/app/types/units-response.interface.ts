@@ -14,9 +14,9 @@ export interface Country {
 }
 
 interface Name {
-  common: string;
-  official: string;
-  nativeName: { [key: string]: NativeName };
+  common?: string;
+  official?: string;
+  nativeName?: { [key: string]: NativeName };
 }
 
 interface NativeName {

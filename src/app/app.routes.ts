@@ -4,6 +4,12 @@ import { HomeComponent } from "./pages/home/home.component";
 import { DetailsCountryComponent } from "./pages/details-country/details-country.component";
 
 export const routes: Routes = [
-  { path: "", component: HomeComponent },
-  { path: "detailsCountry", component: DetailsCountryComponent },
+  {
+    path: "",
+    component: HomeComponent,
+  },
+  {
+    path: "detailsCountry/:cca3",
+    component: DetailsCountryComponent,
+  },
 ];

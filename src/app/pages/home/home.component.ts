@@ -48,8 +48,8 @@ export class HomeComponent implements OnInit {
   }
 
   public getCountries(): void {
-    this.unitService.getCountries().subscribe(
-      (response: Country[]) => {
+    this.unitService.getCountries().subscribe({
+      next: (response: Country[]) => {
         this.countries = response;
         this.filteredCountries = response;
         this.count = this.filteredCountries.length;
@@ -57,23 +57,23 @@ export class HomeComponent implements OnInit {
           new Set(this.countries.map((country) => country.region))
         );
       },
-      (error: HttpErrorResponse) => {
+      error: (error: HttpErrorResponse) => {
         alert(error.message);
-      }
-    );
+      },
+    });
   }
 
   public onRegionChange(region: string | null): void {
     if (region) {
-      this.filterService.getCountriesByRegion(region).subscribe(
-        (response: Country[]) => {
+      this.filterService.getCountriesByRegion(region).subscribe({
+        next: (response: Country[]) => {
           this.filteredCountries = response;
           this.count = this.filteredCountries.length;
         },
-        (error: HttpErrorResponse) => {
+        error: (error: HttpErrorResponse) => {
           alert(error.message);
-        }
-      );
+        },
+      });
     } else {
       this.getCountries();
     }
@@ -104,7 +104,10 @@ export class HomeComponent implements OnInit {
   }
 
   private styleManager = inject(StyleManagerService);
-  isDark = this.styleManager.isDark;
+
+  get isDark(): boolean {
+    return this.styleManager.isDark;
+  }
 
   inside = false;
   touched =
@@ -122,10 +125,5 @@ export class HomeComponent implements OnInit {
         "1px solid var(--mdc-outlined-text-field-disabled-input-text-color)";
     }
     this.inside = false;
-  }
-
-  toggleDarkTheme() {
-    this.styleManager.toggleDarkTheme();
-    this.isDark = !this.isDark;
   }
 }

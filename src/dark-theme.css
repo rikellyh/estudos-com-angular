@@ -25,6 +25,10 @@ main.dark-theme .mat-mdc-select-trigger {
   color: var(--DarkModeText-LightModeElements);
 }
 
+main a {
+  color: var(--LightModeText);
+}
+
 main.dark-theme .cardInfoCountry.mat-mdc-card {
   background-color: var(--DarkModeElements);
   color: var(--DarkModeText-LightModeElements);
